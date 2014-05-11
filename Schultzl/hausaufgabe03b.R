@@ -15,7 +15,7 @@
 
 my.data <- c(1,9,7,3)
 print(mean(my.data))
-
+[1] 5
 # Führen Sie das Skript mit dem "Source"-Knopf aus. Bemerken Sie dabei, dass wir
 # hier print() nutzen müssen, damit das Ergebnis gedruck wird. Das ist anders als 
 # beim interaktiven Fenster!
@@ -39,14 +39,14 @@ print(mean(my.data))
 # überschaubar war.)
 
 # print(my.data[3])
-
+[1] 7
 # Wenn wir eine Variable mit einer Zahl haben,
 # zahl <- 42
 # print(zahl)
-
+[1] 42
 # können wir auch sie indizieren (zwar nur mit [1]), weil es nur ein Element gibt
 # print(zahl[1])
-
+[1] 42
 # Diese starke Orientierung an Daten statt an Datenpunkte ist eine große Stärke
 # von R, die R von vielen anderen Programmiersprachen unterscheidet.
 # Ganz viele praktische Funktionen sind in R eingebaut und sie funktionieren alle
@@ -57,32 +57,39 @@ print(sqrt(my.data))
 
 # Exponenten mit **
 print(my.data**3)
-
+[1] 1.000000 3.000000 2.645751 1.732051
 # Logarithmen
 # print(log(my.data))
-
+[1] 0.000000 2.197225 1.945910 1.098612
 # Summe aller Elemente in einem Vektor
 # print(sum(my.data))
-
+[1] 20
 # Sortieren
 # print(sort(my.data))
-
+[1] 1 3 7 9
 # und vieles Mehr! 
 
 # Es gibt eine eingebaute Funktion für das Median:
 # print(median(my.data))
-
+[1] 5
 # aber nicht für den Modalwert!
 # Es gibt aber andere Funktionen, die uns da helfen.
 # more.data <- c("m","m","w","w","m","w","w","w","w","w","w","m","m","m","w","w","w")
 
 # with table()
 # print(table(more.data))
-
+> more.data <- c("m", "m", "w", "w", "m", "w", "w", "w", "w", "w", "w", "m", "m", "m", "w", "w", "w")
+> print(table(more.data))
+more.data
+m  w 
+6 11 
 # with xtabs()
 # die komische Syntax mit Tilde wird später deutlicher ....
 # print(xtabs(~more.data))
-
+> print(xtabs(~more.data))
+more.data
+m  w 
+6 11 
 # auch die Ergebnisse solcher Funktionen können wir einer Variabel zuweisen:
 # tabelle <- xtabs(~more.data)
 # print(tabelle)
@@ -90,19 +97,32 @@ print(my.data**3)
 # Wir können die Werte auch aus dieser Tabelle bearbeiten
 # total <- sum(tabelle)
 # print(total)
-
+[1] 7
 # und damit relative Häufigkeiten ausdrucken:
 # tabelle.rel <- tabelle / total
 # print(tabelle.rel)
-
+> tabelle.rel <- tabelle / total
+> print(tabelle.rel)
+more.data
+m         w 
+0.5714286 0.4285714 
 # Vervollständigen Sie folgende Zeile, sodass Prozentwerte aus den relativen
 # Häufigkeiten entst ehen: tabelle.prozent <- tabelle.rel code_hier 
 # print(tabelle.prozent)
+> tabelle.prozent <- tabelle.rel * 100
+> print(tabelle.prozent)
+more.data
+m        w 
+57.14286 42.85714 
 
 # Aber die Frage bleibt, wie berechnen wir den Modus? Durch sortieren!
 # tabelle.sorted <- sort(tabelle,decreasing=TRUE)
 # print(tabelle.sorted)
-
+> tabelle.sorted <- sort(tabelle, decreasing=TRUE)
+> print(tabelle.sorted)
+more.data
+m w 
+4 3 
 # Sie sehen hier, dass manche Funktionen weitere Optionen haben, die wir
 # bestimmen können. Hier wollten wir, dass die Liste mit dem größten Wert
 # anfängt, daher setzen wir decreasing=TRUE
@@ -110,12 +130,15 @@ print(my.data**3)
 # Nehmen Sie das erste Element aus dem obigen Ergebnis, um den Modalwert zu
 # bekommen:
 # modus <- code_hier
-
+> modus <- 4
+> print(modus)
+[1] 4
 # Verständisfrage: gibt es immer nur *einen* Modalwert? 
 # Wenn nicht, ist der Code oben korrekt? Warum?
 # Schreiben Sie Ihre Antwort als Comment hier.
 
 # antwort_hier
+Der Modalwert ist der Wert, der in einer Liste von Zahlen am häufigsten vorkommt. 
 
 # Als Abscheid ein Beispiel mit der Darstellung Frequenzdaten mit Säulendiagramm
 # bzw. Histogramm
